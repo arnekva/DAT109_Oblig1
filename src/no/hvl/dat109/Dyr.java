@@ -13,7 +13,7 @@ public class Dyr {
 	private int id;
 
 	public Dyr(String navn, String farge, int id) {
-		super();
+		
 		this.navn = navn;
 		this.farge = farge;
 		this.id = id;

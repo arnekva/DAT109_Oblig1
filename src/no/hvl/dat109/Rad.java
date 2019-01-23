@@ -5,5 +5,6 @@ package no.hvl.dat109;
  *
  */
 public class Rad {
-private int runde;
+private int t;
+
 }
