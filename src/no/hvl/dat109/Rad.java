@@ -39,5 +39,9 @@ public class Rad {
 	
 		
 	}
+	
+//	public rundeSjekk() {
+//		
+//	}
 
 }
