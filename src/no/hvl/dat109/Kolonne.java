@@ -5,5 +5,6 @@ package no.hvl.dat109;
  *
  */
 public class Kolonne {
-private int nummer;
+private int kolonneId;
+
 }
