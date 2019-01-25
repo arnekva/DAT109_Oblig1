@@ -32,6 +32,6 @@ public class Dyr {
 	}
 	@Override
 	public String toString() {
-		return "";
+		return farge + " " + navn;
 	}
 }

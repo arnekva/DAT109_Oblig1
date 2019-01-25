@@ -21,7 +21,7 @@ public class Terning {
 	private Dyr hval = new Dyr("Hval", "blå", 6);
 
 	/**
-	 * Konstruktør: Oppretter et terningobjekt
+	 * Konstruktør: Oppretter et terningobjekta
 	 */
 	public Terning() {
 

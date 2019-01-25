@@ -17,4 +17,13 @@ public class Runde {
 		this.rundeid = id;
 		this.beskrivelse = beskrivelse;
 	}
+
+	public int getRundeid() {
+		return rundeid;
+	}
+
+	public String getBeskrivelse() {
+		return beskrivelse;
+	}
+	
 }

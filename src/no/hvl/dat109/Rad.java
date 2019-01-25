@@ -1,5 +1,7 @@
 package no.hvl.dat109;
 
+import java.util.ArrayList;
+
 /**
  * @author arnekvaleberg
  *
@@ -7,7 +9,7 @@ package no.hvl.dat109;
 public class Rad {
 	public Runde[] rad;
 	private Runde runde1 = new Runde(1, "Du skal trille etter løver");
-	private Runde runde2= new Runde(2, "Du skal trille etter slanger");
+	private Runde runde2 = new Runde(2, "Du skal trille etter slanger");
 	private Runde runde3 = new Runde(3, "Du skal trille etter Pandaer");
 	private Runde runde4 = new Runde(4, "Du skal trille etter Griser");
 	private Runde runde5 = new Runde(5, "Du skal trille etter Elefanter");
@@ -18,7 +20,7 @@ public class Rad {
 	private Runde runde10 = new Runde(10, "Du skal få hus (2 + 3)");
 	private Runde runde11 = new Runde(11, "Du skal få alle ulike");
 	private Runde runde12 = new Runde(12, "Du skal få alle like");
-	
+
 	/**
 	 * Konstruktør
 	 */
@@ -36,12 +38,26 @@ public class Rad {
 		rad[9] = runde10;
 		rad[10] = runde11;
 		rad[11] = runde12;
-	
-		
+
 	}
-	
-//	public rundeSjekk() {
-//		
-//	}
+
+	public void rundeSjekk(int rundenr, ArrayList<Dyr> terningsresultater) {
+		if (rundenr > 7) {
+			// Her skal brukeren bare få like dyr som runden sier.
+			// 1 = løve, 2=slange, 3=Panda,4=gris,5=elefant,6=hval
+			
+			
+		} else if (rundenr == 8) {
+
+		} else if (rundenr == 9) {
+
+		} else if (rundenr == 10) {
+
+		} else if (rundenr == 11) {
+
+		} else if (rundenr == 12) {
+
+		}
+	}
 
 }
