@@ -12,6 +12,10 @@ public class Kolonne {
 		kolonneId = id;
 		kolonne = new int[12];
 	}
+	
+	public void oppdaterVerdi(int runde, int verdi) {
+		kolonne[runde-1] = verdi;
+	}
 
 	public int getKolonneId() {
 		return kolonneId;
@@ -28,6 +32,5 @@ public class Kolonne {
 	public void setKolonne(int[] kolonne) {
 		this.kolonne = kolonne;
 	}
-	
 	
 }

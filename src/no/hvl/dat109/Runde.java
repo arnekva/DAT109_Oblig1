@@ -18,12 +18,20 @@ public class Runde {
 		this.beskrivelse = beskrivelse;
 	}
 
-	public int getRundeid() {
+	public int getRundeId() {
 		return rundeid;
+	}
+
+	public void setRundeId(int rundeId) {
+		this.rundeid = rundeId;
 	}
 
 	public String getBeskrivelse() {
 		return beskrivelse;
+	}
+
+	public void setBeskrivelse(String beskrivelse) {
+		this.beskrivelse = beskrivelse;
 	}
 	
 }

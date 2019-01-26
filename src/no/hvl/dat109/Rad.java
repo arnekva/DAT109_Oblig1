@@ -1,6 +1,8 @@
 package no.hvl.dat109;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author arnekvaleberg
@@ -41,23 +43,134 @@ public class Rad {
 
 	}
 
-	public void rundeSjekk(int rundenr, ArrayList<Dyr> terningsresultater) {
-		if (rundenr > 7) {
+	public Runde[] getRad() {
+		return rad;
+	}
+
+	public void setRad(Runde[] rad) {
+		this.rad = rad;
+	}
+
+	/**
+	 * Sjekker terningkastene opp mot kravet for runden.
+	 * 
+	 * @param rundenr
+	 * @param terningkast
+	 * @return
+	 */
+	public int rundeSjekk(int rundenr, ArrayList<Dyr> terningkast, Spiller spiller) {
+		int resultat = 0;
+		Map<Dyr, Integer> antallKart = mapAntall(terningkast);
+		if (rundenr < 7) {
 			// Her skal brukeren bare få like dyr som runden sier.
 			// 1 = løve, 2=slange, 3=Panda,4=gris,5=elefant,6=hval
-			
-			
-		} else if (rundenr == 8) {
 
+			for (Dyr dyr : terningkast) {
+				if (dyr.getId() == rundenr) {
+					resultat++;
+				}
+			}
+
+		} else if (rundenr == 7) {
+			// tre like
+			for (Dyr dyr : antallKart.keySet()) {
+				int forekomst = antallKart.get(dyr);
+				if (forekomst >= 3) {
+					resultat = 3;
+				}
+			}
+		} else if (rundenr == 8) {
+			//fire like 
+			for (Dyr key : antallKart.keySet()) {
+				int forekomst = antallKart.get(key);
+				if (forekomst >= 4) {
+					resultat = 4;
+				}
+			}
 		} else if (rundenr == 9) {
+			boolean ettpar = false;
+			boolean topar = false;
+			
+			for (Dyr key : antallKart.keySet()) {
+				int forekomst = antallKart.get(key);
+				if(forekomst >= 4) {
+					resultat = 4;
+				}else if(forekomst>=2){
+					if(ettpar) {
+						topar = true;
+					} else { ettpar = true;}
+				}
+				
+			}
+			if(ettpar && topar){
+				resultat = 4;
+			}
 
 		} else if (rundenr == 10) {
-
+			//Sivert sin metode tar ikke høyde for 5 like gir riktig?
+			boolean ettpar = false;
+			boolean trelike = false;
+			
+			for (Dyr key : antallKart.keySet()) {
+				int forekomst = antallKart.get(key);
+				if(forekomst >= 5) {
+					resultat = 5;
+				}else if(forekomst==2){
+					ettpar = true;
+				} else if(forekomst==3) {
+					trelike = true;
+				}
+				
+			}
+			if(ettpar && trelike) {
+				resultat = 5;
+			}
 		} else if (rundenr == 11) {
+			boolean alleulike = true;
+			for(Dyr key : antallKart.keySet()) {
+				int forekomst = antallKart.get(key);
+				if(forekomst >= 2) {
+					alleulike = false;
+				} 
+			}
+			if(alleulike) {
+				resultat = 5;
+			}
 
 		} else if (rundenr == 12) {
+			for(Dyr key : antallKart.keySet()) {
+				int forekomst = antallKart.get(key);
+				if(forekomst == 5) {
+					resultat = 10;
+				} 
+			}
+			
+
 
 		}
+		System.out.println("\n" + spiller.getNavn() + " fikk " + resultat + "/" + ((rundenr < 12) ? "5" : "10") + " poeng denne runden.");
+		
+		return resultat;
+	}
+
+	/**
+	 * Hashmap brukes for å kunne koble antall dyr til resultatscoren
+	 * 
+	 * @param terningkast
+	 * @return
+	 */
+	public Map<Dyr, Integer> mapAntall(ArrayList<Dyr> terningkast) {
+		Map<Dyr, Integer> map = new HashMap<>();
+		for (Dyr key : terningkast) {
+			if (map.containsKey(key)) {
+				int forekomst = map.get(key);
+				forekomst++;
+				map.put(key, forekomst);
+			} else {
+				map.put(key, 1);
+			}
+		}
+		return map;
 	}
 
 }
