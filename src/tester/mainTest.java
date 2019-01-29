@@ -13,7 +13,8 @@ import org.junit.Test;
 public class mainTest {
 
 	
-
+	
+    
 	/**
 	 * Skal teste om logikken i rundesjekken vår fungerer som den skal.
 	 */
@@ -21,16 +22,7 @@ public class mainTest {
 	public void rundeTest() {
 		
 	}
-	
-//	/**
-//	 * Sjekker om finnVinner-metoden vår fungerer og returnerer rett vinner
-//	 */
-//	@Test
-//	public void vinnerTest() {
-//		
-//	}
-//	
-	
+
 	
 	/**
 	 * Sjekker at hashMap for dyr fungerer ordentlig
@@ -45,6 +37,15 @@ public class mainTest {
 	 */
 	@Test
 	public void summerPoengTest() {
+		
+	}
+	
+	
+	/**
+	 * Tester at terningen triller og returnerer et dyr
+	 */
+	@Test
+	public void terningTest() {
 		
 	}
 

@@ -46,7 +46,7 @@ public class Yatzoo {
 	}
 	/**
 	 * Kaster og printer terningresultatene. 
-	 * @param antall
+	 * @param antall - Antall terninger som skal kastes. 
 	 */
 	public void kastTerninger(int antall) {
 		for(int i = 0; i<antall; i++) {
@@ -115,7 +115,7 @@ public class Yatzoo {
 	}
 	/**
 	 * Summerer totalen gjennom kolonnen til spilleren, og setter poengscore.
-	 * @param spiller
+	 * @param spiller - Spilleren som metoden skal summere poengene til
 	 * Summerer poengene til en spiller
 	 */
 	public void summerPoeng(Spiller spiller) {
@@ -126,7 +126,7 @@ public class Yatzoo {
 		spiller.setPoengscore(sum);
 	}
 	/**
-	 * Sjekker resultatene opp mot hverandre og kårer en vinner. 
+	 * Sjekker resultatene opp mot hverandre og kårer en vinner. Printer ut resultatet uten å returnere.
 	 */
 	public void finnVinner() {
 		boolean flereVinnere = false;

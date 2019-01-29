@@ -54,9 +54,10 @@ public class Rad {
 	/**
 	 * Sjekker terningkastene opp mot kravet for runden.
 	 * 
-	 * @param rundenr
-	 * @param terningkast
-	 * @return
+	 * @param rundenr  - Hvilken runde spillet er på akkurat nå
+	 * @param terningkast - Liste med terningresultatet spiller fikk
+	 * @param spiller - Nåværende spiller
+	 * @return resultatet til spilleren denne runden
 	 */
 	public int rundeSjekk(int rundenr, ArrayList<Dyr> terningkast, Spiller spiller) {
 		int resultat = 0;
@@ -156,7 +157,7 @@ public class Rad {
 	/**
 	 * Hashmap brukes for å kunne koble antall dyr til resultatscoren
 	 * 
-	 * @param terningkast
+	 * @param terningkast - Liste av terningkastresultat
 	 * @return
 	 */
 	public Map<Dyr, Integer> mapAntall(ArrayList<Dyr> terningkast) {

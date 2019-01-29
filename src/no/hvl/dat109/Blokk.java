@@ -27,7 +27,7 @@ public class Blokk {
 
 	/**
 	 * Oppretter en kolonne til hver spiller
-	 * @param spillere
+	 * @param spillere - Liste av spillere som skal spille
 	 */
 	public void tildelRader(Spiller[] spillere) {
 		for (int i = 0; i < spillere.length; i++) {
