@@ -36,7 +36,7 @@ public class Yatzoo {
 	 * Hovedmetoden som kjører spillet gjennom alle 12 rundene.
 	 */
 	public void spill() {
-		while (runde < 12) {
+		while (runde < 13) {
 			spillRunde();
 		}
 		for (Spiller spiller : spillere) {
@@ -116,6 +116,7 @@ public class Yatzoo {
 	/**
 	 * Summerer totalen gjennom kolonnen til spilleren, og setter poengscore.
 	 * @param spiller
+	 * Summerer poengene til en spiller
 	 */
 	public void summerPoeng(Spiller spiller) {
 		int sum = 0;
@@ -134,8 +135,10 @@ public class Yatzoo {
 		
 		ArrayList<Spiller> vinnere = new ArrayList<Spiller>();
 		vinnere.add(vinner);
+		
 		for (int i = 1; i < spillere.length; i++) {
 			if (spillere[i].getPoengscore() > vinner.getPoengscore()) {
+				
 				vinner = spillere[i];
 				if (flereVinnere) {
 					flereVinnere = false;
@@ -146,6 +149,11 @@ public class Yatzoo {
 				vinnere.add(spillere[i]);
 			}
 		}
+		System.out.println("\n***** Resultatliste: ***** \n");
+		for(Spiller a: spillere) {
+			System.out.println(a.getNavn() + ": " +a.getPoengscore() + " p.");
+		}
+		
 		if (flereVinnere) {
 			System.out.print("\nDet er flere spillere med like stor poengsum som deler 1. plassen.\nGratulerer");
 			for (Spiller spiller : vinnere) {
