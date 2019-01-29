@@ -12,10 +12,12 @@ public class Runde {
 	
 	private int rundeid;
 	private String beskrivelse;
+	private int max;
 	
-	public Runde(int id, String beskrivelse) {
+	public Runde(int id, String beskrivelse, int max) {
 		this.rundeid = id;
 		this.beskrivelse = beskrivelse;
+		this.max = max;
 	}
 
 	public int getRundeId() {
@@ -32,6 +34,14 @@ public class Runde {
 
 	public void setBeskrivelse(String beskrivelse) {
 		this.beskrivelse = beskrivelse;
+	}
+
+	public int getRundeid() {
+		return rundeid;
+	}
+
+	public int getMax() {
+		return max;
 	}
 	
 }

@@ -10,18 +10,18 @@ import java.util.Map;
  */
 public class Rad {
 	public Runde[] rad;
-	private Runde runde1 = new Runde(1, "Du skal trille etter løver");
-	private Runde runde2 = new Runde(2, "Du skal trille etter slanger");
-	private Runde runde3 = new Runde(3, "Du skal trille etter Pandaer");
-	private Runde runde4 = new Runde(4, "Du skal trille etter Griser");
-	private Runde runde5 = new Runde(5, "Du skal trille etter Elefanter");
-	private Runde runde6 = new Runde(6, "Du skal trille etter Hvaler");
-	private Runde runde7 = new Runde(7, "Du skal få 3 like");
-	private Runde runde8 = new Runde(8, "Du skal få 4 like");
-	private Runde runde9 = new Runde(9, "Du skal få 2 par");
-	private Runde runde10 = new Runde(10, "Du skal få hus (2 + 3)");
-	private Runde runde11 = new Runde(11, "Du skal få alle ulike");
-	private Runde runde12 = new Runde(12, "Du skal få alle like");
+	private Runde runde1 = new Runde(1, "Du skal trille etter løver", 5);
+	private Runde runde2 = new Runde(2, "Du skal trille etter slanger", 5);
+	private Runde runde3 = new Runde(3, "Du skal trille etter Pandaer", 5);
+	private Runde runde4 = new Runde(4, "Du skal trille etter Griser",5);
+	private Runde runde5 = new Runde(5, "Du skal trille etter Elefanter",5);
+	private Runde runde6 = new Runde(6, "Du skal trille etter Hvaler",5);
+	private Runde runde7 = new Runde(7, "Du skal få 3 like",3);
+	private Runde runde8 = new Runde(8, "Du skal få 4 like",4);
+	private Runde runde9 = new Runde(9, "Du skal få 2 par",4);
+	private Runde runde10 = new Runde(10, "Du skal få hus (2 + 3)",5);
+	private Runde runde11 = new Runde(11, "Du skal få alle ulike",5);
+	private Runde runde12 = new Runde(12, "Du skal få alle like",10);
 
 	/**
 	 * Konstruktør
@@ -149,7 +149,7 @@ public class Rad {
 
 
 		}
-		System.out.println("\n" + spiller.getNavn() + " fikk " + resultat + "/" + ((rundenr < 12) ? "5" : "10") + " poeng denne runden.");
+		System.out.println("\n" + spiller.getNavn() + " fikk " + resultat + "/" + rad[rundenr-1].getMax()  + " poeng i runde " + rundenr);
 		
 		return resultat;
 	}
