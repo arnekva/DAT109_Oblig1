@@ -151,7 +151,7 @@ public class Yatzoo {
 		}
 		System.out.println("\n***** Resultatliste: ***** \n");
 		for(Spiller a: spillere) {
-			System.out.println(a.getNavn() + ": " +a.getPoengscore() + " p.");
+			System.out.println(a.getNavn() + ": " +a.getPoengscore() + "/" + blokk.getRad().getMaxSum() +" poeng.");
 		}
 		
 		if (flereVinnere) {

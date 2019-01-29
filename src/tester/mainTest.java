@@ -4,6 +4,7 @@
 package tester;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Random;
 
 import org.junit.Assert;
@@ -13,6 +14,7 @@ import org.junit.Test;
 import no.hvl.dat109.Blokk;
 import no.hvl.dat109.Dyr;
 import no.hvl.dat109.Kolonne;
+import no.hvl.dat109.Rad;
 import no.hvl.dat109.Spiller;
 import no.hvl.dat109.Terning;
 import no.hvl.dat109.Yatzoo;
@@ -269,7 +271,19 @@ public class mainTest {
 	 */
 	@Test
 	public void mapTest() {
+		Rad rad = new Rad();
 		
+		terninger.add(love);
+		terninger.add(love);
+		terninger.add(hval);
+		terninger.add(gris);
+		terninger.add(gris);
+		Map<Dyr, Integer> test = rad.mapAntall(terninger);
+		
+		Assert.assertTrue(test.containsKey(love));
+		Assert.assertTrue(test.containsKey(hval));
+		Assert.assertTrue(test.containsKey(gris));
+		Assert.assertFalse(test.containsKey(panda));
 	}
 	
 	/**
