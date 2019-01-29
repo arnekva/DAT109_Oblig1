@@ -116,7 +116,6 @@ public class Yatzoo {
 	/**
 	 * Summerer totalen gjennom kolonnen til spilleren, og setter poengscore.
 	 * @param spiller - Spilleren som metoden skal summere poengene til
-	 * Summerer poengene til en spiller
 	 */
 	public void summerPoeng(Spiller spiller) {
 		int sum = 0;

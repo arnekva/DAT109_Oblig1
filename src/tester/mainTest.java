@@ -46,20 +46,20 @@ public class mainTest {
 	final int runde10 = 10;
 	final int runde11 = 11;
 	final int runde12 = 12;
-	
+
 	@Before
 	public void setup() {
 		spillere[0] = spiller1;
 		spillere[1] = spiller2;
 		blokk = new Blokk(spillere);
 	}
-	
+
 	/**
 	 * Denne metoden teste om sjekkene for hver runde er korrekte.
 	 */
 	@Test
 	public void rundeTest() {
-		//Runde 1-6 kan sjekkes i én sjekk, da de stiller samme krav.
+		// Runde 1-6 kan sjekkes i én sjekk, da de stiller samme krav.
 		Dyr dyr1 = hval;
 		Dyr dyr2 = hval;
 		Dyr dyr3 = hval;
@@ -71,11 +71,12 @@ public class mainTest {
 		terninger.add(dyr4);
 		terninger.add(dyr5);
 		int sjekk = blokk.getRad().rundeSjekk(runde6, terninger, spiller1);
+		@SuppressWarnings("unused") //Brukes kun for å printe spiller 2 sine resultater
 		int sjekk1 = blokk.getRad().rundeSjekk(runde6, terninger, spiller2);
 		Assert.assertEquals(5, sjekk);
 		terninger = new ArrayList<Dyr>();
-		
-		//Sjekker runde 7. 3 like
+
+		// Sjekker runde 7. 3 like
 		dyr1 = love;
 		dyr2 = hval;
 		dyr3 = gris;
@@ -89,8 +90,8 @@ public class mainTest {
 		sjekk = blokk.getRad().rundeSjekk(runde7, terninger, spiller1);
 		Assert.assertEquals(3, sjekk);
 		terninger = new ArrayList<Dyr>();
-	
-		//runde 7 null rette
+
+		// runde 7 null rette
 		dyr1 = love;
 		dyr2 = slange;
 		dyr3 = gris;
@@ -104,8 +105,8 @@ public class mainTest {
 		sjekk = blokk.getRad().rundeSjekk(runde7, terninger, spiller2);
 		Assert.assertEquals(0, sjekk);
 		terninger = new ArrayList<Dyr>();
-				
-		//Sjekker runde 8. 4 like
+
+		// Sjekker runde 8. 4 like
 		dyr1 = gris;
 		dyr2 = gris;
 		dyr3 = hval;
@@ -119,8 +120,8 @@ public class mainTest {
 		sjekk = blokk.getRad().rundeSjekk(runde8, terninger, spiller1);
 		Assert.assertEquals(4, sjekk);
 		terninger = new ArrayList<Dyr>();
-			
-		//runde 8 ingen rette
+
+		// runde 8 ingen rette
 		dyr1 = love;
 		dyr2 = slange;
 		dyr3 = gris;
@@ -134,8 +135,8 @@ public class mainTest {
 		sjekk = blokk.getRad().rundeSjekk(runde8, terninger, spiller2);
 		Assert.assertEquals(0, sjekk);
 		terninger = new ArrayList<Dyr>();
-				
-		//Sjekker runde 9. 2 par
+
+		// Sjekker runde 9. 2 par
 		dyr1 = slange;
 		dyr2 = slange;
 		dyr3 = gris;
@@ -149,8 +150,8 @@ public class mainTest {
 		sjekk = blokk.getRad().rundeSjekk(runde9, terninger, spiller1);
 		Assert.assertEquals(4, sjekk);
 		terninger = new ArrayList<Dyr>();
-			
-		//runde 9 bare ett par
+
+		// runde 9 bare ett par
 		dyr1 = love;
 		dyr2 = slange;
 		dyr3 = gris;
@@ -164,8 +165,8 @@ public class mainTest {
 		sjekk = blokk.getRad().rundeSjekk(runde9, terninger, spiller2);
 		Assert.assertEquals(0, sjekk);
 		terninger = new ArrayList<Dyr>();
-				
-		//Sjekker runde 10. Fullt hus
+
+		// Sjekker runde 10. Fullt hus
 		dyr1 = love;
 		dyr2 = love;
 		dyr3 = love;
@@ -179,8 +180,8 @@ public class mainTest {
 		sjekk = blokk.getRad().rundeSjekk(runde10, terninger, spiller1);
 		Assert.assertEquals(5, sjekk);
 		terninger = new ArrayList<Dyr>();
-			
-		//runde 10 ingen hus
+
+		// runde 10 ingen hus
 		dyr1 = love;
 		dyr2 = slange;
 		dyr3 = gris;
@@ -194,8 +195,8 @@ public class mainTest {
 		sjekk = blokk.getRad().rundeSjekk(runde10, terninger, spiller2);
 		Assert.assertEquals(0, sjekk);
 		terninger = new ArrayList<Dyr>();
-				
-		//Sjekker runde 11. Alle ulike
+
+		// Sjekker runde 11. Alle ulike
 		dyr1 = love;
 		dyr2 = slange;
 		dyr3 = gris;
@@ -209,8 +210,8 @@ public class mainTest {
 		sjekk = blokk.getRad().rundeSjekk(runde11, terninger, spiller1);
 		Assert.assertEquals(5, sjekk);
 		terninger = new ArrayList<Dyr>();
-			
-		//RUnde 11 flere like
+
+		// RUnde 11 flere like
 		dyr1 = love;
 		dyr2 = slange;
 		dyr3 = gris;
@@ -224,8 +225,8 @@ public class mainTest {
 		sjekk = blokk.getRad().rundeSjekk(runde11, terninger, spiller2);
 		Assert.assertEquals(0, sjekk);
 		terninger = new ArrayList<Dyr>();
-				
-		//Sjekker runde 12. Alle like
+
+		// Sjekker runde 12. Alle like
 		dyr1 = slange;
 		dyr2 = slange;
 		dyr3 = slange;
@@ -239,24 +240,24 @@ public class mainTest {
 		sjekk = blokk.getRad().rundeSjekk(runde12, terninger, spiller1);
 		Assert.assertEquals(10, sjekk);
 		terninger = new ArrayList<Dyr>();
-				
-		//Sjekker runde 12. En ulik
-				dyr1 = slange;
-				dyr2 = slange;
-				dyr3 = slange;
-				dyr4 = love;
-				dyr5 = slange;
-				terninger.add(dyr1);
-				terninger.add(dyr2);
-				terninger.add(dyr3);
-				terninger.add(dyr4);
-				terninger.add(dyr5);
-				sjekk = blokk.getRad().rundeSjekk(runde12, terninger, spiller2);
-				Assert.assertEquals(0, sjekk);
-				terninger = new ArrayList<Dyr>();
-				
+
+		// Sjekker runde 12. En ulik
+		dyr1 = slange;
+		dyr2 = slange;
+		dyr3 = slange;
+		dyr4 = love;
+		dyr5 = slange;
+		terninger.add(dyr1);
+		terninger.add(dyr2);
+		terninger.add(dyr3);
+		terninger.add(dyr4);
+		terninger.add(dyr5);
+		sjekk = blokk.getRad().rundeSjekk(runde12, terninger, spiller2);
+		Assert.assertEquals(0, sjekk);
+		terninger = new ArrayList<Dyr>();
+
 	}
-	
+
 	/**
 	 * Tester om trillTerning() returnerer et dyr.
 	 */
@@ -265,27 +266,28 @@ public class mainTest {
 		Dyr dyr = terning.trillTerning();
 		Assert.assertNotNull(dyr);
 	}
-	
+
 	/**
-	 * Tester om mapAntall() gir en korrekt mapping av dyr og forekomsten av det dyret.
+	 * Tester om mapAntall() gir en korrekt mapping av dyr og forekomsten av det
+	 * dyret.
 	 */
 	@Test
 	public void mapTest() {
 		Rad rad = new Rad();
-		
+
 		terninger.add(love);
 		terninger.add(love);
 		terninger.add(hval);
 		terninger.add(gris);
 		terninger.add(gris);
 		Map<Dyr, Integer> test = rad.mapAntall(terninger);
-		
+
 		Assert.assertTrue(test.containsKey(love));
 		Assert.assertTrue(test.containsKey(hval));
 		Assert.assertTrue(test.containsKey(gris));
 		Assert.assertFalse(test.containsKey(panda));
 	}
-	
+
 	/**
 	 * Tester om summerpoeng() angir riktig poengsum til spilleren.
 	 */
@@ -294,27 +296,24 @@ public class mainTest {
 		int maxScore = 61;
 		spiller1.setKolonne(kolonne);
 
-		for(int i = 1; i<13;i++) {
-			if(i < 7 || i == 10 || i == 11) {
+		for (int i = 1; i < 13; i++) {
+			if (i < 7 || i == 10 || i == 11) {
 				spiller1.getKolonne().oppdaterVerdi(i, 5);
-			} else if(i == 7) {
+			} else if (i == 7) {
 				spiller1.getKolonne().oppdaterVerdi(i, 3);
-			} else if(i == 8 || i == 9) {
+			} else if (i == 8 || i == 9) {
 				spiller1.getKolonne().oppdaterVerdi(i, 4);
 			} else {
 				spiller1.getKolonne().oppdaterVerdi(i, 10);
 			}
-			
+
 		}
-		int sum = 0;
-		for (int i : spiller1.getKolonne().getKolonne()) {
-			sum += i;
-		}
-		spiller1.setPoengscore(sum);
-		
+
+		yatzoo.summerPoeng(spiller1);
 		Assert.assertEquals(maxScore, spiller1.getPoengscore());
-		System.out.println("\n\n" +spiller1.getNavn() + " har scoret full pott! Han fikk " + spiller1.getPoengscore() + "/"+ blokk.getRad().getMaxSum() + " poeng!");
-		
+		System.out.println("\n\n" + spiller1.getNavn() + " har scoret full pott! Han fikk " + spiller1.getPoengscore()
+				+ "/" + blokk.getRad().getMaxSum() + " poeng!");
+
 	}
 
 }

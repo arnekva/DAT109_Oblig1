@@ -25,7 +25,7 @@ public class Rad {
 	private Runde runde12 = new Runde(12, "Du skal få alle like",10);
 
 	/**
-	 * Konstruktør
+	 * Konstruktøren oppretter 12 rader, en for hver runde
 	 */
 	public Rad() {
 		rad = new Runde[12];
@@ -113,7 +113,7 @@ public class Rad {
 			}
 
 		} else if (rundenr == 10) {
-			//Sivert sin metode tar ikke høyde for 5 like gir riktig?
+			
 			boolean ettpar = false;
 			boolean trelike = false;
 			
@@ -163,7 +163,7 @@ public class Rad {
 	 * Hashmap brukes for å kunne koble antall dyr til resultatscoren
 	 * 
 	 * @param terningkast - Liste av terningkastresultat
-	 * @return
+	 * @return - Et map av Dyr, Integer
 	 */
 	public Map<Dyr, Integer> mapAntall(ArrayList<Dyr> terningkast) {
 		Map<Dyr, Integer> map = new HashMap<>();
