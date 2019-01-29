@@ -9,6 +9,7 @@ import java.util.Map;
  *
  */
 public class Rad {
+	final int maxSum = 61;
 	public Runde[] rad;
 	private Runde runde1 = new Runde(1, "Du skal trille etter løver", 5);
 	private Runde runde2 = new Runde(2, "Du skal trille etter slanger", 5);
@@ -49,6 +50,10 @@ public class Rad {
 
 	public void setRad(Runde[] rad) {
 		this.rad = rad;
+	}
+
+	public int getMaxSum() {
+		return maxSum;
 	}
 
 	/**

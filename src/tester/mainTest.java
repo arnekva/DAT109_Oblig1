@@ -4,6 +4,7 @@
 package tester;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,19 +12,24 @@ import org.junit.Test;
 
 import no.hvl.dat109.Blokk;
 import no.hvl.dat109.Dyr;
+import no.hvl.dat109.Kolonne;
 import no.hvl.dat109.Spiller;
 import no.hvl.dat109.Terning;
+import no.hvl.dat109.Yatzoo;
 
 /**
  * @author arnekvaleberg
  *
  */
 public class mainTest {
+	Random rand = new Random();
 	ArrayList<Dyr> terninger = new ArrayList<Dyr>();
 	Spiller spiller1 = new Spiller("Knut-Arild");
 	Spiller spiller2 = new Spiller("Erna");
 	Spiller[] spillere = new Spiller[2];
+	Kolonne kolonne = new Kolonne(1);
 	Blokk blokk;
+	Yatzoo yatzoo = new Yatzoo();
 	Terning terning = new Terning();
 	Dyr love = new Dyr("løve", "Oransje", 1);
 	Dyr slange = new Dyr("slange", "Grønn", 2);
@@ -52,9 +58,9 @@ public class mainTest {
 	@Test
 	public void rundeTest() {
 		//Runde 1-6 kan sjekkes i én sjekk, da de stiller samme krav.
-		Dyr dyr1 = love;
-		Dyr dyr2 = slange;
-		Dyr dyr3 = gris;
+		Dyr dyr1 = hval;
+		Dyr dyr2 = hval;
+		Dyr dyr3 = hval;
 		Dyr dyr4 = hval;
 		Dyr dyr5 = hval;
 		terninger.add(dyr1);
@@ -64,7 +70,7 @@ public class mainTest {
 		terninger.add(dyr5);
 		int sjekk = blokk.getRad().rundeSjekk(runde6, terninger, spiller1);
 		int sjekk1 = blokk.getRad().rundeSjekk(runde6, terninger, spiller2);
-		Assert.assertEquals(2, sjekk);
+		Assert.assertEquals(5, sjekk);
 		terninger = new ArrayList<Dyr>();
 		
 		//Sjekker runde 7. 3 like
@@ -271,6 +277,29 @@ public class mainTest {
 	 */
 	@Test
 	public void summerPoengTest() {
+		int maxScore = 61;
+		spiller1.setKolonne(kolonne);
+
+		for(int i = 1; i<13;i++) {
+			if(i < 7 || i == 10 || i == 11) {
+				spiller1.getKolonne().oppdaterVerdi(i, 5);
+			} else if(i == 7) {
+				spiller1.getKolonne().oppdaterVerdi(i, 3);
+			} else if(i == 8 || i == 9) {
+				spiller1.getKolonne().oppdaterVerdi(i, 4);
+			} else {
+				spiller1.getKolonne().oppdaterVerdi(i, 10);
+			}
+			
+		}
+		int sum = 0;
+		for (int i : spiller1.getKolonne().getKolonne()) {
+			sum += i;
+		}
+		spiller1.setPoengscore(sum);
+		
+		Assert.assertEquals(maxScore, spiller1.getPoengscore());
+		System.out.println("\n\n" +spiller1.getNavn() + " har scoret full pott! Han fikk " + spiller1.getPoengscore() + "/"+ blokk.getRad().getMaxSum() + " poeng!");
 		
 	}
 

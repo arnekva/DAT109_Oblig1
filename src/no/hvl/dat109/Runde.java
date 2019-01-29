@@ -14,6 +14,8 @@ public class Runde {
 	private String beskrivelse;
 	private int max;
 	
+	
+
 	public Runde(int id, String beskrivelse, int max) {
 		this.rundeid = id;
 		this.beskrivelse = beskrivelse;
@@ -43,5 +45,6 @@ public class Runde {
 	public int getMax() {
 		return max;
 	}
+
 	
 }
