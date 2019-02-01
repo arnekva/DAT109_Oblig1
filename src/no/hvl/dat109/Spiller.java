@@ -36,4 +36,15 @@ public class Spiller {
 	public void setKolonne(Kolonne kolonne) {
 		this.kolonne = kolonne;
 	}
+	/**
+	 * Summerer totalen gjennom kolonnen til spilleren, og setter poengscore.
+	 * @param spiller - Spilleren som metoden skal summere poengene til
+	 */
+	public void summerPoeng(Spiller spiller) {
+		int sum = 0;
+		for (int i : spiller.getKolonne().getKolonne()) {
+			sum += i;
+		}
+		spiller.setPoengscore(sum);
+	}
 }

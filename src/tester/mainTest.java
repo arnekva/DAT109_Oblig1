@@ -14,10 +14,8 @@ import org.junit.Test;
 import no.hvl.dat109.Blokk;
 import no.hvl.dat109.Dyr;
 import no.hvl.dat109.Kolonne;
-import no.hvl.dat109.Rad;
 import no.hvl.dat109.Spiller;
 import no.hvl.dat109.Terning;
-import no.hvl.dat109.Yatzoo;
 
 /**
  * @author arnekvaleberg
@@ -31,7 +29,6 @@ public class mainTest {
 	Spiller[] spillere = new Spiller[2];
 	Kolonne kolonne = new Kolonne(1);
 	Blokk blokk;
-	Yatzoo yatzoo = new Yatzoo();
 	Terning terning = new Terning();
 	Dyr love = new Dyr("løve", "Oransje", 1);
 	Dyr slange = new Dyr("slange", "Grønn", 2);
@@ -273,19 +270,38 @@ public class mainTest {
 	 */
 	@Test
 	public void mapTest() {
-		Rad rad = new Rad();
-
 		terninger.add(love);
 		terninger.add(love);
+		terninger.add(slange);
+		terninger.add(panda);
+		terninger.add(panda);
+		terninger.add(panda);
+		terninger.add(elefant);
 		terninger.add(hval);
-		terninger.add(gris);
-		terninger.add(gris);
-		Map<Dyr, Integer> test = rad.mapAntall(terninger);
-
-		Assert.assertTrue(test.containsKey(love));
-		Assert.assertTrue(test.containsKey(hval));
-		Assert.assertTrue(test.containsKey(gris));
-		Assert.assertFalse(test.containsKey(panda));
+		terninger.add(hval);
+		terninger.add(hval);
+		terninger.add(hval);
+		
+		Map<Dyr, Integer> testMap = blokk.getRad().mapAntall(terninger);
+		int antallLover = testMap.get(love);
+		Assert.assertEquals(2, antallLover);
+		int antallSlanger = testMap.get(slange);
+		Assert.assertEquals(1, antallSlanger);
+		int antallPandaer = testMap.get(panda);
+		Assert.assertEquals(3, antallPandaer);
+		int antallElefanter = testMap.get(elefant);
+		Assert.assertEquals(1, antallElefanter);
+		int antallHvaler = testMap.get(hval);
+		Assert.assertEquals(4, antallHvaler);
+		int antallGriser;
+		try {
+			antallGriser = testMap.get(gris);
+		} catch (NullPointerException e) {
+			antallGriser = 0;
+		}
+		Assert.assertEquals(0, antallGriser);
+		
+		
 	}
 
 	/**
@@ -309,7 +325,7 @@ public class mainTest {
 
 		}
 
-		yatzoo.summerPoeng(spiller1);
+		spiller1.summerPoeng(spiller1);
 		Assert.assertEquals(maxScore, spiller1.getPoengscore());
 		System.out.println("\n\n" + spiller1.getNavn() + " har scoret full pott! Han fikk " + spiller1.getPoengscore()
 				+ "/" + blokk.getRad().getMaxSum() + " poeng!");

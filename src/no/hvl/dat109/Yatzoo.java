@@ -40,7 +40,7 @@ public class Yatzoo {
 			spillRunde();
 		}
 		for (Spiller spiller : spillere) {
-			summerPoeng(spiller);
+			spiller.summerPoeng(spiller);
 		}
 		finnVinner();
 	}
@@ -113,17 +113,7 @@ public class Yatzoo {
 	public ArrayList<Dyr> getTerningsresultater() {
 		return terningsresultater;
 	}
-	/**
-	 * Summerer totalen gjennom kolonnen til spilleren, og setter poengscore.
-	 * @param spiller - Spilleren som metoden skal summere poengene til
-	 */
-	public void summerPoeng(Spiller spiller) {
-		int sum = 0;
-		for (int i : spiller.getKolonne().getKolonne()) {
-			sum += i;
-		}
-		spiller.setPoengscore(sum);
-	}
+	
 	/**
 	 * Sjekker resultatene opp mot hverandre og kårer en vinner. Printer ut resultatet uten å returnere.
 	 */
