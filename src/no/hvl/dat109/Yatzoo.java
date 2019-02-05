@@ -18,6 +18,10 @@ public class Yatzoo {
 	private Blokk blokk;
 	public Spiller[] spillere;
 	
+	/**
+	 * Konstruktør for Yatzoospillet
+	 * @param spillere - Tar inn en tabell av spillere som skal spille. 
+	 */
 	public Yatzoo(Spiller[] spillere) {
 		runde = 1;
 		terning = new Terning();
@@ -88,7 +92,7 @@ public class Yatzoo {
 			}
 			if (count != 2) {
 				
-				System.out.println("Skriv inn tallene på terningene du vil ha");
+				System.out.println("Skriv inn tallene på terningene du vil ha separert med mellomrom");
 				String input = reader.nextLine();
 				String[] inputTab = input.split("\\s");
 				ArrayList<Dyr> midlertidig = new ArrayList<Dyr>();
@@ -97,6 +101,7 @@ public class Yatzoo {
 					midlertidig.add(terningsresultater.get(Integer.parseInt(inputTab[i]) - 1));
 					}catch(Exception e) {
 						System.out.println("Ingen terninger ble lagret. Triller alle på ny");
+					
 					}
 				}
 				terningsresultater = midlertidig;
@@ -107,6 +112,7 @@ public class Yatzoo {
 				ferdig = true;
 			}
 				count++;
+			
 
 		}
 	}
@@ -138,13 +144,13 @@ public class Yatzoo {
 				vinnere.add(spillere[i]);
 			}
 		}
-		System.out.println("\n***** Resultatliste: ***** \n");
+		System.out.println("\n****** Resultatliste: ****** \n");
 		for(Spiller a: spillere) {
 			System.out.println(a.getNavn() + ": " +a.getPoengscore() + "/" + blokk.getRad().getMaxSum() +" poeng.");
 		}
-		
+		System.out.println("\n****************************");
 		if (flereVinnere) {
-			System.out.print("\nDet er flere spillere med like stor poengsum som deler 1. plassen.\nGratulerer");
+			System.out.print("\nDet er flere spillere med like stor poengsum som deler 1. plassen.\nGratulerer til");
 			for (Spiller spiller : vinnere) {
 				System.out.print("  " + spiller.getNavn());
 			}
@@ -154,6 +160,7 @@ public class Yatzoo {
 		} else {
 			System.out.println("\nDet har oppstått et problem, og ingen vinner kan kåres. Spillet avsluttes.");
 		}
+		System.out.println("\n****************************");
 	}
 
 	

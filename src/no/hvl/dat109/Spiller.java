@@ -13,6 +13,10 @@ public class Spiller {
 	private int poengscore;
 	
 	
+	/**
+	 * Konstruktør for spiller
+	 * @param navn - Navnet på spilleren
+	 */
 	public Spiller(String navn) {
 		this.navn = navn;
 		this.poengscore = 0;

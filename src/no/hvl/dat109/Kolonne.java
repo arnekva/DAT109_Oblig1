@@ -8,6 +8,10 @@ public class Kolonne {
 	private int kolonneId;
 	public int[] kolonne;
 	
+	/**
+	 * Oppretteren en kolonne som kan tildeles til en spiller. 12 rader (plasser i tabellen) opprettes automatisk.
+	 * @param id - Unik ID for kolonnen.
+	 */
 	public Kolonne(int id) {
 		kolonneId = id;
 		kolonne = new int[12];

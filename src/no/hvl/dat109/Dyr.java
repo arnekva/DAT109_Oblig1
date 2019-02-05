@@ -12,6 +12,12 @@ public class Dyr {
 	private String farge;
 	private int id;
 
+	/**
+	 * Konsturktør for dyrene på terningene
+	 * @param navn - Navn på dyret
+	 * @param farge - Farge på siden til terningen
+	 * @param id - Unik ID for å kunne identifisere resultatet
+	 */
 	public Dyr(String navn, String farge, int id) {
 		
 		this.navn = navn;

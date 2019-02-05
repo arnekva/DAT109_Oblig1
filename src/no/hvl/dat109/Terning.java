@@ -21,7 +21,7 @@ public class Terning {
 	private Dyr hval = new Dyr("Hval", "blå", 6);
 
 	/**
-	 * Konstruktør: Oppretter et terningobjekta
+	 * Konstruktør: Oppretter et terningobjekt (tabell med 6 dyr).
 	 */
 	public Terning() {
 
@@ -36,7 +36,7 @@ public class Terning {
 
 	/**
 	 * Triller terningen og returnerer et dyr-objekt
-	 * @return
+	 * @return Returnerer et dyr-objekt fra terningtabellen etter hvilket tall som tilsvarer plassen i tabellen. 
 	 */
 	public Dyr trillTerning() {
 

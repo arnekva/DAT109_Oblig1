@@ -16,6 +16,12 @@ public class Runde {
 	
 	
 
+	/**
+	 * Kunstruktør for å opprette en runde
+	 * @param id - Rundeid er unik for hver runde for å kunne identifisere regler
+	 * @param beskrivelse - Kort beskrivelse i tekst for kravene til runden
+	 * @param max - Maksimal score som er mulig på runden
+	 */
 	public Runde(int id, String beskrivelse, int max) {
 		this.rundeid = id;
 		this.beskrivelse = beskrivelse;
