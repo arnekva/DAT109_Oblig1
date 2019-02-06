@@ -102,7 +102,7 @@ public class Yatzoo {
 				System.out.println("Skriv inn tallene på terningene du vil ha separert med mellomrom");
 				String input = reader.nextLine();
 				String[] inputTab = input.split("\\s");
-				
+
 				ArrayList<Dyr> midlertidig = new ArrayList<Dyr>();
 				for (int i = 0; i < inputTab.length; i++) {
 					if (erGyldigTall(inputTab[i])) {
@@ -173,11 +173,13 @@ public class Yatzoo {
 
 	/**
 	 * 
-	 * Formålet med denne metoden er å sørge for at dersom brukeren taster et ugyldig tall, skal fortsatt
-	 * de gyldige terningene lagres. Hvis en skrives eksempelvis "1 2 6" så skal 1 og 2 lagres, men 6 forkastes.
+	 * Formålet med denne metoden er å sørge for at dersom brukeren taster et
+	 * ugyldig tall, skal fortsatt de gyldige terningene lagres. Hvis en skrives
+	 * eksempelvis "1 2 6" så skal 1 og 2 lagres, men 6 forkastes.
 	 * 
 	 * 
-	 * @param tall - En string fra inputTab som skal forsøkes å konverteres til en int
+	 * @param tall - En string fra inputTab som skal forsøkes å konverteres til en
+	 *             int
 	 * @return Returnerer true hvis Integer parseInt fungerer, og false hvis ikke
 	 */
 	private boolean erGyldigTall(String tall) {
@@ -187,9 +189,9 @@ public class Yatzoo {
 			if (i > 0 && i < 6) {
 				return true;
 			}
-			
+
 			return false;
-			
+
 		} catch (Exception e) {
 			return false;
 
