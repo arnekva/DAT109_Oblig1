@@ -17,10 +17,11 @@ public class Yatzoo {
 	private Scanner reader = new Scanner(System.in);
 	private Blokk blokk;
 	public Spiller[] spillere;
-	
+
 	/**
 	 * Konstruktør for Yatzoospillet
-	 * @param spillere - Tar inn en tabell av spillere som skal spille. 
+	 * 
+	 * @param spillere - Tar inn en tabell av spillere som skal spille.
 	 */
 	public Yatzoo(Spiller[] spillere) {
 		runde = 1;
@@ -29,13 +30,14 @@ public class Yatzoo {
 		blokk = new Blokk(spillere);
 		this.spillere = spillere;
 	}
-	
+
 	public Yatzoo() {
-		
+
 		runde = 0;
 		terning = new Terning();
 		terningsresultater = new ArrayList<Dyr>();
 	}
+
 	/**
 	 * Hovedmetoden som kjører spillet gjennom alle 12 rundene.
 	 */
@@ -48,24 +50,27 @@ public class Yatzoo {
 		}
 		finnVinner();
 	}
+
 	/**
-	 * Kaster og printer terningresultatene. 
-	 * @param antall - Antall terninger som skal kastes. 
+	 * Kaster og printer terningresultatene.
+	 * 
+	 * @param antall - Antall terninger som skal kastes.
 	 */
 	public void kastTerninger(int antall) {
-		for(int i = 0; i<antall; i++) {
+		for (int i = 0; i < antall; i++) {
 			Dyr dyr = terning.trillTerning();
 			terningsresultater.add(dyr);
 		}
 		System.out.println();
 	}
+
 	/**
 	 * Printer, lagrer og resetter terningkastresultatene
 	 */
 	public void spillRunde() {
 		for (Spiller spiller : spillere) {
-			System.out.println("\n" + spiller.getNavn() + " sin tur."
-						+ "\n" + blokk.getRad().getRad()[runde-1].getBeskrivelse());
+			System.out.println("\n" + spiller.getNavn() + " sin tur." + "\n"
+					+ blokk.getRad().getRad()[runde - 1].getBeskrivelse());
 			kastTerninger();
 			int resultat = blokk.getRad().rundeSjekk(runde, terningsresultater, spiller);
 			spiller.getKolonne().oppdaterVerdi(runde, resultat);
@@ -73,8 +78,10 @@ public class Yatzoo {
 		}
 		runde++;
 	}
+
 	/**
-	 * Kaster og spør spilleren hvilke terninger han vil ta vare på. Max 3 kast per spiller.
+	 * Kaster og spør spilleren hvilke terninger han vil ta vare på. Max 3 kast per
+	 * spiller.
 	 */
 	public void kastTerninger() {
 		boolean ferdig = false;
@@ -91,49 +98,50 @@ public class Yatzoo {
 
 			}
 			if (count != 2) {
-				
+
 				System.out.println("Skriv inn tallene på terningene du vil ha separert med mellomrom");
 				String input = reader.nextLine();
 				String[] inputTab = input.split("\\s");
+				
 				ArrayList<Dyr> midlertidig = new ArrayList<Dyr>();
 				for (int i = 0; i < inputTab.length; i++) {
-					try {
-					midlertidig.add(terningsresultater.get(Integer.parseInt(inputTab[i]) - 1));
-					}catch(Exception e) {
-						System.out.println("Ingen terninger ble lagret. Triller alle på ny");
-					
+					if (erGyldigTall(inputTab[i])) {
+						midlertidig.add(terningsresultater.get(Integer.parseInt(inputTab[i]) - 1));
+					} else {
+						System.out.println("\n" + inputTab[i].toString() + " er et ugyldig tall og spares ikke!");
 					}
 				}
 				terningsresultater = midlertidig;
-				
+
 			}
 			antall = 5 - terningsresultater.size();
 			if (antall == 0) {
 				ferdig = true;
 			}
-				count++;
-			
+			count++;
 
 		}
 	}
+
 	public ArrayList<Dyr> getTerningsresultater() {
 		return terningsresultater;
 	}
-	
+
 	/**
-	 * Sjekker resultatene opp mot hverandre og kårer en vinner. Printer ut resultatet uten å returnere.
+	 * Sjekker resultatene opp mot hverandre og kårer en vinner. Printer ut
+	 * resultatet uten å returnere.
 	 */
 	public void finnVinner() {
 		boolean flereVinnere = false;
 
 		Spiller vinner = spillere[0];
-		
+
 		ArrayList<Spiller> vinnere = new ArrayList<Spiller>();
 		vinnere.add(vinner);
-		
+
 		for (int i = 1; i < spillere.length; i++) {
 			if (spillere[i].getPoengscore() > vinner.getPoengscore()) {
-				
+
 				vinner = spillere[i];
 				if (flereVinnere) {
 					flereVinnere = false;
@@ -145,8 +153,8 @@ public class Yatzoo {
 			}
 		}
 		System.out.println("\n****** Resultatliste: ****** \n");
-		for(Spiller a: spillere) {
-			System.out.println(a.getNavn() + ": " +a.getPoengscore() + "/" + blokk.getRad().getMaxSum() +" poeng.");
+		for (Spiller a : spillere) {
+			System.out.println(a.getNavn() + ": " + a.getPoengscore() + "/" + blokk.getRad().getMaxSum() + " poeng.");
 		}
 		System.out.println("\n****************************");
 		if (flereVinnere) {
@@ -155,7 +163,7 @@ public class Yatzoo {
 				System.out.print("  " + spiller.getNavn());
 			}
 			System.out.println("!");
-		} else if (vinner != null){
+		} else if (vinner != null) {
 			System.out.println("\nGratulerer " + vinner.getNavn() + "! Du har vunnet spillet!");
 		} else {
 			System.out.println("\nDet har oppstått et problem, og ingen vinner kan kåres. Spillet avsluttes.");
@@ -163,5 +171,30 @@ public class Yatzoo {
 		System.out.println("\n****************************");
 	}
 
-	
+	/**
+	 * 
+	 * Formålet med denne metoden er å sørge for at dersom brukeren taster et ugyldig tall, skal fortsatt
+	 * de gyldige terningene lagres. Hvis en skrives eksempelvis "1 2 6" så skal 1 og 2 lagres, men 6 forkastes.
+	 * 
+	 * 
+	 * @param tall - En string fra inputTab som skal forsøkes å konverteres til en int
+	 * @return Returnerer true hvis Integer parseInt fungerer, og false hvis ikke
+	 */
+	private boolean erGyldigTall(String tall) {
+
+		try {
+			int i = Integer.parseInt(tall);
+			if (i > 0 && i < 6) {
+				return true;
+			}
+			
+			return false;
+			
+		} catch (Exception e) {
+			return false;
+
+		}
+
+	}
+
 }

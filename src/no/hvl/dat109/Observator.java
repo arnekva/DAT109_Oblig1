@@ -24,10 +24,10 @@ public class Observator {
 
 			try {
 				antall = tastatur.nextInt();
-				if(antall<6) {
+				if(antall<6 && antall>0) {
 				fortsett = true;
 				} else {
-					System.out.println("For høyt tall. Spillet har maks 5 deltakere!");
+					System.out.println("Ugyldig tall. Spillet har maks 5 deltakere!");
 				}
 				tastatur.nextLine();
 			} catch (InputMismatchException e) {
